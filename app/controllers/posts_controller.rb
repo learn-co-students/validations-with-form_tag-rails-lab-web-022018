@@ -1,4 +1,20 @@
 class PostsController < ApplicationController
+
+  def new
+    @post = Post.new
+  end
+
+  def create
+    @post = Post.create(post_params)
+
+    if @post.valid?
+      redirect_to post_path(@post)
+    else
+      @errors = @post.errors
+      render :new
+    end
+  end
+
   def show
     @post = Post.find(params[:id])
   end
@@ -9,10 +25,14 @@ class PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
-
     @post.update(post_params)
 
-    redirect_to post_path(@post)
+    if @post.valid?
+      redirect_to post_path(@post)
+    else
+      @errors = @post.errors
+      render :edit
+    end
   end
 
   private
