@@ -6,7 +6,7 @@
   </ul>
 <%end%>
 
-<h2>Create an Author</h2>
+<h2>Update an Author</h2>
 <%= form_tag authors_path, method: "post" do %>
   <div class="field">
     <%= label_tag "name", "Name" %>
@@ -23,8 +23,9 @@
     <%= text_field_tag "phone_number" %>
   </div>
 
-  <%= submit_tag "Create" %>
+  <%= submit_tag "Update" %>
 <% end %> -->
+
 
 
 <%= form_tag("/authors") do %>
@@ -56,5 +57,5 @@
   </div>
 
 
-  <%= submit_tag "Create" %>
+  <%= submit_tag "Update" %>
 <% end %>
